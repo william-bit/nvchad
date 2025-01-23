@@ -61,9 +61,6 @@ opt.wildmode = "longest:full,full" -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum window width
 opt.wrap = false -- Disable line wrap
 
--- Change native notify to vim notify
-vim.notify = require "notify"
-
 -- highlight yanked text for 200ms using the "Visual" highlight group
 vim.cmd [[
   augroup highlight_yank
@@ -73,5 +70,6 @@ vim.cmd [[
 ]]
 
 -- autocmd
+require "notification"
 require "autocmd"
 require "style"

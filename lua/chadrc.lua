@@ -53,6 +53,31 @@ M.nvdash = {
     { txt = "─", hl = "NvDashFooter", no_gap = true, rep = true },
   },
 }
+M.mason = {
+  cmd = true,
+  pkgs = {
+    "cspell",
+    "delve",
+    "gofumpt",
+    "goimports",
+    "gopls",
+    "intelephense",
+    "js-debug-adapter",
+    "json-lsp",
+    "lua-language-server",
+    "php-cs-fixer",
+    "prettierd",
+    "prisma-language-server",
+    "pyright",
+    "ruff",
+    "shellcheck",
+    "shfmt",
+    "sqlfluff",
+    "stylua",
+    "tailwindcss-language-server",
+    "vtsls",
+  },
+}
 -- M.ui = {
 --       tabufline = {
 --          lazyload = false
