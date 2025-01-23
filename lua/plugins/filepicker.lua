@@ -14,6 +14,11 @@ return {
       { "<c-t>", "<cmd>FzfLua git_status<CR>" },
       { "<c-x>", "<cmd>FzfLua oldfiles<CR>" },
       { "<leader>fh", "<cmd>FzfLua help_tags<CR>" },
+      { "gD", "<cmd>FzfLua lsp_declarations<CR>", desc = "Go to declaration" },
+      { "gd", "<cmd>FzfLua lsp_definitions<CR>", desc = "Go to definition" },
+      { "gi", "<cmd>FzfLua lsp_implementations<CR>", desc = "Go to implementation" },
+      { "<leader>D", "<cmd>FzfLua lsp_typedefs<CR>", desc = "Go to type definition" },
+      { "gr", "<cmd>FzfLua lsp_references<CR>", desc = "Show references" },
       {
         "g.",
         function()
@@ -29,6 +34,16 @@ return {
         end,
         desc = "LSP code action",
         mode = { "n", "v" },
+      },
+      { "<leader>sh", vim.lsp.buf.signature_help, desc = "Show signature help" },
+      { "<leader>wa", vim.lsp.buf.add_workspace_folder, desc = "Add workspace folder" },
+      { "<leader>wr", vim.lsp.buf.remove_workspace_folder, desc = "Remove workspace folder" },
+      {
+        "<leader>wl",
+        function()
+          print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+        end,
+        desc = "List workspace folders",
       },
     },
     opts = {

@@ -8,9 +8,14 @@ return {
     "saghen/blink.cmp",
     version = "*",
     event = { "InsertEnter", "cmdlineenter" },
-    dependencies = "rafamadriz/friendly-snippets",
+    dependencies = { "rafamadriz/friendly-snippets", { "L3MON4D3/LuaSnip", version = "v2.*" } },
     -- use a release tag to download pre-built binaries
     opts = {
+      snippets = { preset = "luasnip" },
+      -- ensure you have the `snippets` source (enabled by default)
+      sources = {
+        default = { "lsp", "path", "snippets", "buffer" },
+      },
       keymap = {
         preset = "default",
         ["<C-p>"] = { "select_prev", "fallback" },

@@ -2,8 +2,8 @@
 require("nvchad.configs.lspconfig").defaults()
 
 local lspconfig = require "lspconfig"
--- EXAMPLE
-local nvlsp = require "nvchad.configs.lspconfig"
+local capabilities = require("blink.cmp").get_lsp_capabilities()
+
 vim.api.nvim_get_runtime_file("", true)
 require("mason-lspconfig").setup_handlers {
   -- The first entry (without a key) will be the default handler
@@ -12,9 +12,7 @@ require("mason-lspconfig").setup_handlers {
   function(server_name) -- default handler (optional)
     if server_name == "lua_ls" then
       lspconfig.lua_ls.setup {
-        on_attach = nvlsp.on_attach,
-        on_init = nvlsp.on_init,
-        capabilities = nvlsp.capabilities,
+        capabilities = capabilities,
         settings = {
           Lua = {
             runtime = {
@@ -45,9 +43,7 @@ require("mason-lspconfig").setup_handlers {
       }
     else
       lspconfig[server_name].setup {
-        on_attach = nvlsp.on_attach,
-        on_init = nvlsp.on_init,
-        capabilities = nvlsp.capabilities,
+        capabilities = capabilities,
       }
     end
   end,

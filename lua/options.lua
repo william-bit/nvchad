@@ -21,6 +21,16 @@ opt.fillchars = {
   diff = "╱",
   eob = " ",
 }
+if vim.fn.has "nvim-0.10" == 1 then
+  opt.smoothscroll = true
+  opt.foldexpr = "v:lua.require'fold'.foldexpr()"
+  opt.foldmethod = "expr"
+  opt.foldtext = ""
+else
+  opt.foldmethod = "indent"
+  opt.foldtext = "v:lua.require'fold'.foldtext()"
+end
+
 opt.foldlevel = 99
 opt.formatexpr = "v:lua.require'conform'.formatexpr()"
 opt.grepformat = "%f:%l:%c:%m"
