@@ -39,9 +39,10 @@ return {
         ghost_text = { enabled = true },
         menu = {
           auto_show = function(ctx)
-            if ctx.mode ~= "cmdline" then
+            if ctx.mode == "cmdline" then
               return false
-            elseif not vim.tbl_contains({ "/", "?" }, vim.fn.getcmdtype()) then
+            end
+            if vim.tbl_contains({ "/", "?" }, vim.fn.getcmdtype()) then
               return false
             end
             return true
