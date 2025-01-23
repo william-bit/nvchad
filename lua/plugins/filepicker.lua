@@ -11,6 +11,7 @@ return {
       { "<c-o>", "<cmd>FzfLua buffers<CR>" },
       { "<c-f>", "<cmd>FzfLua live_grep<CR>" },
       { "<c-p>", "<cmd>FzfLua files<CR>" },
+      { "<c-t>", "<cmd>FzfLua git_status<CR>" },
       { "<c-x>", "<cmd>FzfLua oldfiles<CR>" },
       { "<leader>fh", "<cmd>FzfLua help_tags<CR>" },
       {

@@ -33,6 +33,7 @@ M.nvdash = {
   buttons = {
     { txt = "  Find File", keys = "c-p", cmd = "FzfLua files" },
     { txt = "󰈭  Find Word", keys = "c-f", cmd = "FzfLua live_grep" },
+    { txt = "  Git Files", keys = "c-t", cmd = "FzfLua git_status" },
     { txt = "  Recent Files", keys = "c-x", cmd = "FzfLua oldfiles" },
     { txt = "󱥚  Themes", keys = "th", cmd = ":lua require('nvchad.themes').open()" },
     { txt = "  Mappings", keys = "ch", cmd = "NvCheatsheet" },

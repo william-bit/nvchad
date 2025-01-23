@@ -27,7 +27,6 @@ map.set("n", "gs", function()
   require "nvchad.lsp.renamer"()
 end, { desc = "Rename LSP" })
 
-map.set("n", "<c-t>", "<cmd>Trouble diagnostics toggle focus=true<CR>")
 map.set(
   "n",
   "<c-l>",
