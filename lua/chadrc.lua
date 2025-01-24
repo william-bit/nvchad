@@ -83,10 +83,10 @@ M.mason = {
     "vtsls",
   },
 }
--- M.ui = {
---       tabufline = {
---          lazyload = false
---      }
---}
+M.ui = {
+  tabufline = {
+    enabled = false,
+  },
+}
 
 return M
