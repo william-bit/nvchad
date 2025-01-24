@@ -14,18 +14,17 @@ return {
   {
     "windwp/nvim-autopairs",
     event = "InsertEnter",
+    config = true,
   },
   {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    config = true,
     keys = {
       { "ys" },
       { "cs" },
       { "ds" },
     },
-    config = function()
-      require("nvim-surround").setup {}
-    end,
   },
   {
     "hedyhli/outline.nvim",
