@@ -15,7 +15,6 @@ map.set("n", ")", "<c-w>>")
 map.set("n", "<c-n>", "<c-v>")
 
 map.set("n", "<A-n>", "<cmd>enew <CR>")
-map.set("n", "<A-o>", "<cmd>Outline<CR>", { desc = "Toggle Outline" })
 
 map.set("n", ",", function()
   vim.lsp.buf.hover()

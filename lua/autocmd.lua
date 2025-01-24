@@ -16,6 +16,3 @@ vim.api.nvim_create_autocmd({ "BufRead" }, {
     require("twilight.init").enable()
   end,
 })
-
--- disable inlay hints
-vim.lsp.inlay_hint.enable(false)
