@@ -71,14 +71,22 @@ opt.wildmode = "longest:full,full" -- Command-line completion mode
 opt.winminwidth = 5 -- Minimum window width
 opt.wrap = false -- Disable line wrap
 
--- highlight yanked text for 200ms using the "Visual" highlight group
 vim.cmd [[
+  "set up powershell as shell
+  let &shell = executable('pwsh') ? 'pwsh -NoLogo' : 'powershell -NoLogo'
+  let &shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;'
+  let &shellredir = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+  let &shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
+  set shellquote= shellxquote=
+
+  "highlight yanked text for 200ms using the "Visual" highlight group
   augroup highlight_yank
   autocmd!
   au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=200})
   augroup END
+
+  "Change to directory given as argument
+  if argc() == 1 && isdirectory(argv(0)) | cd `=argv(0)` | endif
 ]]
 
--- autocmd
-require "autocmd"
 require "style"

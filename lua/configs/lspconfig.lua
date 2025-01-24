@@ -31,7 +31,7 @@ require("mason-lspconfig").setup_handlers {
               library = {
                 vim.fn.expand "$VIMRUNTIME/lua",
                 vim.fn.stdpath "data" .. "\\lazy",
-                vim.fn.stdpath "config",
+                vim.fn.stdpath "config" .. "\\lua",
               },
             },
             -- Do not send telemetry data containing a randomized but unique identifier
