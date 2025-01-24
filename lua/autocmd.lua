@@ -9,10 +9,3 @@ vim.cmd [[
   let &shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode'
   set shellquote= shellxquote=
 ]]
-
--- Enable Twilight
-vim.api.nvim_create_autocmd({ "BufRead" }, {
-  callback = function()
-    require("twilight.init").enable()
-  end,
-})

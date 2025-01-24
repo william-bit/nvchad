@@ -26,22 +26,10 @@ map.set("n", "gs", function()
   require "nvchad.lsp.renamer"()
 end, { desc = "Rename LSP" })
 
-map.set(
-  "n",
-  "<c-l>",
-  '<cmd>lua require("which-key").show("z=", {mode = "n", auto = true})<CR>',
-  { desc = "Fix spell check" }
-)
-
 -- Map Ctrl-Backspace to delete the previous word in insert mode.
 vim.cmd [[
   imap <C-BS> <C-W>
   imap <C-h> <C-W>
-]]
-
-vim.cmd [[
-    tnoremap <c-w> <c-@>
-    tnoremap <A-[> <C-\><C-n>
 ]]
 
 -- Handle link
@@ -65,9 +53,12 @@ function HandleCursorUrl()
   end
 end
 
-vim.cmd [[
-  nnoremap <A-;> <cmd>lua HandleCursorUrl()<CR>
-]]
+map.set("n", "<A-;>", "<cmd>lua HandleCursorUrl()<CR>", { desc = "Open Url in cursor line" })
+
+-- Which-key as fix spell check
+map.set("n", "<c-l>", function()
+  require("which-key").show("z=", { mode = "n", auto = true })
+end, { desc = "Fix spell check" })
 
 -- Toggle term
 vim.keymap.set({ "n", "t" }, "<C-j>", function()
@@ -88,3 +79,7 @@ end, { desc = "Lazygit (Root Dir)" })
 
 vim.keymap.set("t", "<c-u>", "<Up>")
 vim.keymap.set("t", "<c-d>", "<Down>")
+vim.cmd [[
+    tnoremap <c-w> <c-@>
+    tnoremap <A-[> <C-\><C-n>
+]]

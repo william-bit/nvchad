@@ -80,6 +80,5 @@ vim.cmd [[
 ]]
 
 -- autocmd
-require "notification"
 require "autocmd"
 require "style"
