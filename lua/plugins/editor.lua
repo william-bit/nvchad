@@ -1,4 +1,5 @@
 return {
+  { "HiPhish/rainbow-delimiters.nvim", event = "BufRead" },
   {
     "vim-scripts/ReplaceWithRegister",
     keys = {
