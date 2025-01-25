@@ -1,13 +1,17 @@
 return {
-  { "HiPhish/rainbow-delimiters.nvim", event = "BufRead" },
+  {
+    "folke/ts-comments.nvim",
+    opts = {},
+    event = "BufRead",
+    enabled = vim.fn.has "nvim-0.10.0" == 1,
+  },
   {
     "vim-scripts/ReplaceWithRegister",
     keys = {
       { "gl", "<Plug>ReplaceWithRegisterOperator" },
-      { "gln", "<Plug>ReplaceWithRegisterLine" },
+      { "glr", "<Plug>ReplaceWithRegisterLine" },
     },
   },
-  { "JoosepAlviste/nvim-ts-context-commentstring", event = "BufRead *.ts,*.tsx" },
   {
     "windwp/nvim-ts-autotag",
     event = "InsertEnter",

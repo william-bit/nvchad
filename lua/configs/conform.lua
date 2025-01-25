@@ -23,9 +23,9 @@ local options = {
     markdown = { "prettierd", "prettier", stop_after_first = true },
     javascript = { "prettierd", "prettier", stop_after_first = true },
     typescript = { "prettierd", "prettier", stop_after_first = true },
-    javascriptreact = { "rustywind" },
-    typescriptreact = { "rustywind" },
-    vue = { "rustywind" },
+    javascriptreact = { "prettierd", "rustywind" },
+    typescriptreact = { "prettierd", "rustywind" },
+    vue = { "prettierd", "rustywind" },
     blade = { "rustywind" },
     php = { "rustywind", "php_cs_fixer" },
     html = function(bufnr)
