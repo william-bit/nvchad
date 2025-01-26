@@ -5,8 +5,6 @@
 ---@type ChadrcConfig
 local M = {}
 
-local input_key = ""
-local clear_key = false
 local endcommand = {
   "h",
   "j",
@@ -15,16 +13,15 @@ local endcommand = {
   "H",
   "M",
   "L",
-  "w",
-  "W",
   "e",
   "E",
+  "w",
+  "W",
   "b",
   "B",
   "%",
   "^",
   "*",
-  "$",
   "_",
   "G",
   "+",
@@ -84,28 +81,29 @@ local function contains(list, x)
   end
   return false
 end
+local input_key = ""
 vim.on_key(function(_, key)
   if key and #key > 0 then
-    if clear_key then
-      input_key = ""
-      clear_key = false
-    end
-    if string.match(vim.fn.keytrans(key), "<.+>") or contains(endcommand, key) then
-      clear_key = true
-    end
+    local typed = vim.fn.keytrans(key)
+    local last_typed = string.sub(input_key, -1)
+    local last_2typed = string.sub(input_key, -2)
+    local command = input_key .. typed
     if
-      string.match(string.sub(input_key, -2), "[a-zA-Z]0")
-      or input_key == "0"
-      or string.match(string.sub(input_key, -2), "[f|F|t|T].")
-      or contains(endcommand, string.sub(input_key, -2))
+      input_key == "0"
+      or input_key == "$"
+      or string.match(typed, "<.+>")
+      or string.match(last_2typed, "[f|F|t|T].")
+      or string.match(last_2typed, "[a-zA-Z][0|$]")
+      or contains(endcommand, last_typed)
+      or contains(endcommand, last_2typed)
     then
-      input_key = vim.fn.keytrans(key)
+      input_key = typed
     else
-      input_key = input_key .. vim.fn.keytrans(key)
+      input_key = command
     end
     vim.cmd [[ doautoall ]]
   end
-end, 1)
+end)
 
 M.base46 = {
   theme = "gruvbox",
