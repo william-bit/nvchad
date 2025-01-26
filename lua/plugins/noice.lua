@@ -43,10 +43,4 @@ return { -- lazy.nvim
       },
     },
   },
-  {
-    "chrisgrieser/nvim-recorder",
-    event = "VeryLazy",
-    dependencies = "rcarriga/nvim-notify", -- optional
-    opts = true, -- required even with default settings, since it calls `setup()`
-  },
 }
