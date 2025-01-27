@@ -1,7 +1,7 @@
 return {
   {
     "folke/twilight.nvim",
-    event = "BufRead",
+    event = "VeryLazy",
     opts = function()
       require("twilight.init").enable()
       return {
