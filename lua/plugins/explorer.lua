@@ -2,7 +2,7 @@ return {
   {
     "nvim-tree/nvim-tree.lua",
     keys = {
-      { "<A-b>", require("nvim-tree.api").tree.toggle, desc = "toggle nvim-tree" }
+      { "<A-b>", require("nvim-tree.api").tree.toggle, desc = "toggle nvim-tree" },
     },
     opts = {
       filters = { dotfiles = false },
@@ -41,5 +41,5 @@ return {
         },
       },
     },
-  }
+  },
 }

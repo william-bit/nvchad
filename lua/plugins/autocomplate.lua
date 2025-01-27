@@ -41,7 +41,7 @@ return {
         },
       },
       completion = {
-        ghost_text = { enabled = true },
+        ghost_text = { enabled = false },
         menu = {
           auto_show = function(ctx)
             if ctx.mode == "cmdline" then

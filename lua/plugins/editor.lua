@@ -1,5 +1,17 @@
 return {
   {
+    "neovim/nvim-lspconfig",
+    event = "VeryLazy",
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    event = "VeryLazy",
+  },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    event = "VeryLazy",
+  },
+  {
     "folke/ts-comments.nvim",
     opts = {},
     event = "VeryLazy",

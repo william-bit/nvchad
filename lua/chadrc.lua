@@ -191,7 +191,7 @@ M.ui = {
   statusline = {
     theme = "minimal",
     separator_style = "default",
-    order = { "mode", "file", "git", "%=", "lsp_msg", "%=", "diagnostics", "lsp", "macro", "feedkey", "cwd", "cursor" },
+    order = { "mode", "file", "git", "%=", "%=", "diagnostics", "lsp", "macro", "feedkey", "cwd", "cursor" },
     modules = {
       macro = function()
         local reg = vim.fn.reg_recording()
