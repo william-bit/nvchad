@@ -83,15 +83,15 @@ local function contains(list, x)
   end
   return false
 end
-local input_key = ""
-local array_key = { "" }
+local array_key = { "", "" }
 vim.on_key(function(_, key)
   if key and #key > 0 then
     local mode = vim.api.nvim_get_mode()
     if mode.mode == "n" or mode.mode == "no" then
+      local input_key = table.concat(array_key)
       local typed = vim.fn.keytrans(key)
       local last_typed = array_key[#array_key]
-      local last_2typed = string.sub(input_key, -2)
+      local last_2typed = array_key[#array_key - 1] .. array_key[#array_key]
       if
         input_key == "0"
         or input_key == "$"
@@ -102,10 +102,9 @@ vim.on_key(function(_, key)
         or contains(endcommand, last_typed)
         or contains(endcommand, last_2typed)
       then
-        array_key = { "" }
+        array_key = { "", "" }
       end
       table.insert(array_key, typed)
-      input_key = table.concat(array_key)
     end
     vim.cmd [[ doautoall ]]
   end
@@ -207,10 +206,7 @@ M.ui = {
         return "Recording @" .. reg .. " "
       end,
       feedkey = function()
-        if input_key == "" then
-          return ""
-        end -- not recording
-        return "[" .. input_key .. "] "
+        return "[" .. table.concat(array_key) .. "] "
       end,
     },
   },
