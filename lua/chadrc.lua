@@ -14,6 +14,7 @@ local endcommand = {
   "M",
   "L",
   "e",
+  "q",
   "E",
   "w",
   "W",
@@ -26,6 +27,7 @@ local endcommand = {
   "G",
   "+",
   "=",
+  ":",
   "_",
   "-",
   ";",
@@ -84,22 +86,25 @@ end
 local input_key = ""
 vim.on_key(function(_, key)
   if key and #key > 0 then
-    local typed = vim.fn.keytrans(key)
-    local last_typed = string.sub(input_key, -1)
-    local last_2typed = string.sub(input_key, -2)
-    local command = input_key .. typed
-    if
-      input_key == "0"
-      or input_key == "$"
-      or string.match(typed, "<.+>")
-      or string.match(last_2typed, "[f|F|t|T].")
-      or string.match(last_2typed, "[a-zA-Z][0|$]")
-      or contains(endcommand, last_typed)
-      or contains(endcommand, last_2typed)
-    then
-      input_key = typed
-    else
-      input_key = command
+    local mode = vim.api.nvim_get_mode()
+    if mode.mode == "n" or mode.mode == "no" then
+      local typed = vim.fn.keytrans(key)
+      local last_typed = string.sub(input_key, -1)
+      local last_2typed = string.sub(input_key, -2)
+      local command = input_key .. typed
+      if
+        input_key == "0"
+        or input_key == "$"
+        or string.match(typed, "<.+>")
+        or string.match(last_2typed, "[f|F|t|T].")
+        or string.match(last_2typed, "[a-zA-Z][0|$]")
+        or contains(endcommand, last_typed)
+        or contains(endcommand, last_2typed)
+      then
+        input_key = typed
+      else
+        input_key = command
+      end
     end
     vim.cmd [[ doautoall ]]
   end

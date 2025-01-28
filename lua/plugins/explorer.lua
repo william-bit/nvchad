@@ -20,7 +20,7 @@ return {
       git = {
         enable = true,
         ignore = false,
-        timeout = 100,
+        timeout = 500,
       },
       renderer = {
         root_folder_label = false,
