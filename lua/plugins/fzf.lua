@@ -62,6 +62,14 @@ return {
         color_icons = false,
         path_shorten = true,
       },
+      git = {
+        files = {
+          color_icons = false,
+        },
+        status = {
+          color_icons = false,
+        },
+      },
       lsp = {
         color_icons = false,
         code_actions = {
