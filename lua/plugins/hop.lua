@@ -45,6 +45,24 @@ return {
         end,
       },
       {
+        "h",
+        function()
+          require("hop").hint_anywhere {
+            direction = require("hop.hint").HintDirection.BEFORE_CURSOR,
+            current_line_only = true,
+          }
+        end,
+      },
+      {
+        "l",
+        function()
+          require("hop").hint_anywhere {
+            direction = require("hop.hint").HintDirection.AFTER_CURSOR,
+            current_line_only = true,
+          }
+        end,
+      },
+      {
         "s",
         function()
           require("hop").hint_vertical()
