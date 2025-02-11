@@ -41,6 +41,23 @@ require("mason-lspconfig").setup_handlers {
           },
         },
       }
+    elseif server_name == "gradle_ls" then
+      local util = require "lspconfig.util"
+      lspconfig.gradle_ls.setup {
+        capabilities = capabilities,
+        filetypes = { "groovy" },
+        root_dir = util.root_pattern(
+          "settings.gradle", -- Gradle (multi-project)
+          "build.gradle" -- Gradle
+        ),
+        cmd = { "gradle-language-server.cmd" },
+        -- gradle-language-server expects init_options.settings to be defined
+        init_options = {
+          settings = {
+            gradleWrapperEnabled = true,
+          },
+        },
+      }
     else
       lspconfig[server_name].setup {
         capabilities = capabilities,
