@@ -59,9 +59,11 @@ require("mason-lspconfig").setup_handlers {
         },
       }
     else
-      lspconfig[server_name].setup {
-        capabilities = capabilities,
-      }
+      if server_name ~= "jdtls" then
+        lspconfig[server_name].setup {
+          capabilities = capabilities,
+        }
+      end
     end
   end,
 }

@@ -9,6 +9,7 @@ return {
         "vimdoc",
         "bash",
         "html",
+        "java",
         "javascript",
         "json",
         "lua",

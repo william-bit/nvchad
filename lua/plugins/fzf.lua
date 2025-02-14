@@ -18,7 +18,7 @@ return {
       { "gd", "<cmd>FzfLua lsp_definitions<CR>", desc = "Go to definition" },
       { "gi", "<cmd>FzfLua lsp_implementations<CR>", desc = "Go to implementation" },
       { "<leader>D", "<cmd>FzfLua lsp_typedefs<CR>", desc = "Go to type definition" },
-      { "gr", "<cmd>FzfLua lsp_references<CR>", desc = "Show references" },
+      { "gr", "<cmd>FzfLua lsp_references<CR>", desc = "Go to references" },
       {
         "g.",
         function()
@@ -47,6 +47,12 @@ return {
       },
     },
     opts = {
+      keymap = {
+        fzf = {
+          -- Send finding to quick fix like telescope
+          ["ctrl-q"] = "select-all+accept",
+        },
+      },
       files = {
         previewer = false,
         color_icons = false,
