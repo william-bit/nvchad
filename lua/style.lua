@@ -73,12 +73,15 @@ function Style.FZF_LUA(border)
 end
 
 function Style.CMP_BLINK()
+  ---@type Colors
   local colors = Style.colors
   -- custom highlights per style!
   local styles_base = {
     BlinkCmpMenu = { fg = colors.seablue, bg = colors.black2 },
     BlinkCmpMenuSelection = { bg = colors.grey, fg = "NONE" },
 
+    BlinkCmpLabelDescription = { fg = colors.light_grey },
+    BlinkCmpLabelDetail = { fg = colors.nord_blue },
     BlinkCmpLabelDeprecated = { fg = colors.grey, bg = "NONE", strikethrough = true },
     BlinkCmpLabelMatch = { fg = colors.seablue, bg = "NONE", bold = true },
     BlinkCmpKind = { fg = colors.purple, bg = "NONE", italic = true },
