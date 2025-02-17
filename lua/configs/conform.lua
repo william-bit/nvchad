@@ -20,9 +20,9 @@ local options = {
     -- Conform will run multiple formatters sequentially
     python = { "isort", "black" },
     -- Use a sub-list to run only the first available formatter
-    markdown = { "prettierd", "prettier", stop_after_first = true },
-    javascript = { "prettierd", "prettier", stop_after_first = true },
-    typescript = { "prettierd", "prettier", stop_after_first = true },
+    markdown = { "prettierd", stop_after_first = true },
+    javascript = { "prettierd", stop_after_first = true },
+    typescript = { "prettierd", stop_after_first = true },
     javascriptreact = { "prettierd", "rustywind" },
     typescriptreact = { "prettierd", "rustywind" },
     vue = { "prettierd", "rustywind" },

@@ -81,16 +81,16 @@ return {
           local fname = vim.api.nvim_buf_get_name(0)
           local root_dir = opts.root_dir(fname)
           local project_name = opts.project_name(root_dir)
-          local cmd = vim.deepcopy(opts.cmd)
+          local cmdCopy = vim.deepcopy(opts.cmd)
           if project_name then
-            vim.list_extend(cmd, {
+            vim.list_extend(cmdCopy, {
               "-configuration",
               opts.jdtls_config_dir(project_name),
               "-data",
               opts.jdtls_workspace_dir(project_name),
             })
           end
-          return cmd
+          return cmdCopy
         end,
 
         -- These depend on nvim-dap, but can additionally be disabled by setting false here.

@@ -36,7 +36,9 @@ return {
           "snippet_forward",
           "fallback",
         },
-        cmdline = {
+      },
+      cmdline = {
+        keymap = {
           preset = "default",
           ["<Enter>"] = { "select_and_accept", "fallback" },
           ["<Tab>"] = { "show", "select_next", "fallback" },
@@ -45,6 +47,17 @@ return {
       },
       completion = {
         ghost_text = { enabled = false },
+        accept = {
+          -- experimental auto-brackets support
+          auto_brackets = {
+            enabled = true,
+          },
+        },
+        documentation = {
+          auto_show = true,
+          auto_show_delay_ms = 200,
+        },
+
         menu = {
           auto_show = function(ctx)
             if ctx.mode == "cmdline" then
@@ -57,6 +70,7 @@ return {
           end,
           draw = {
             columns = { { "kind_icon", gap = 10 }, { "label", "label_description" }, { "kind" } },
+            treesitter = { "lsp" },
           },
         },
       },
