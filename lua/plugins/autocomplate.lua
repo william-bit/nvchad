@@ -18,6 +18,11 @@ return {
       -- ensure you have the `snippets` source (enabled by default)
       sources = {
         default = { "lsp", "path", "snippets", "buffer" },
+        providers = {
+          lsp = {
+            async = true,
+          },
+        },
       },
       keymap = {
         preset = "default",

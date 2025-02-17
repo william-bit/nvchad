@@ -2,7 +2,9 @@
 require("nvchad.configs.lspconfig").defaults()
 
 local lspconfig = require "lspconfig"
+
 local capabilities = require("blink.cmp").get_lsp_capabilities()
+-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 vim.api.nvim_get_runtime_file("", true)
 require("mason-lspconfig").setup_handlers {

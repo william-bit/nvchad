@@ -1,6 +1,8 @@
 -- This is the same as in lspconfig.configs.jdtls, but avoids
 -- needing to require that when this module loads.
 local java_filetypes = { "java" }
+-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 -- Utility function to extend or override a config table, similar to the way
 -- that Plugin.opts works.
@@ -81,16 +83,16 @@ return {
           local fname = vim.api.nvim_buf_get_name(0)
           local root_dir = opts.root_dir(fname)
           local project_name = opts.project_name(root_dir)
-          local cmdCopy = vim.deepcopy(opts.cmd)
+          local fullCmd = vim.deepcopy(opts.cmd)
           if project_name then
-            vim.list_extend(cmdCopy, {
+            vim.list_extend(fullCmd, {
               "-configuration",
               opts.jdtls_config_dir(project_name),
               "-data",
               opts.jdtls_workspace_dir(project_name),
             })
           end
-          return cmdCopy
+          return fullCmd
         end,
 
         -- These depend on nvim-dap, but can additionally be disabled by setting false here.
@@ -146,7 +148,7 @@ return {
           },
           settings = opts.settings,
           -- enable CMP capabilities
-          capabilities = require("blink.cmp").get_lsp_capabilities(),
+          capabilities = capabilities,
         }, opts.jdtls)
 
         -- Existing server will be reused if the root_dir matches.
