@@ -86,6 +86,14 @@ return {
           local fullCmd = vim.deepcopy(opts.cmd)
           if project_name then
             vim.list_extend(fullCmd, {
+              "-Declipse.application=org.eclipse.jdt.ls.core.id1",
+              "-Dosgi.bundles.defaultStartLevel=4",
+              "-Declipse.product=org.eclipse.jdt.ls.core.product",
+              "-Dlog.level=ALL",
+              "-Xmx1G",
+              "--add-modules=ALL-SYSTEM",
+              "--add-opens java.base/java.util=ALL-UNNAMED",
+              "--add-opens java.base/java.lang=ALL-UNNAMED",
               "-configuration",
               opts.jdtls_config_dir(project_name),
               "-data",
