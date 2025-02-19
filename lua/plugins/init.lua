@@ -1,7 +1,9 @@
+require("nvim-treesitter.install").compilers = { "zig" }
+
 return {
   {
     "stevearc/conform.nvim",
-    event = 'BufWritePre', -- uncomment for format on save
+    event = "BufWritePre", -- uncomment for format on save
     opts = require "configs.conform",
   },
 
@@ -12,5 +14,31 @@ return {
       require "configs.lspconfig"
     end,
   },
-  "williamboman/mason-lspconfig.nvim"
+  "williamboman/mason-lspconfig.nvim",
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "vimdoc",
+        "bash",
+        "html",
+        "java",
+        "javascript",
+        "json",
+        "lua",
+        "markdown",
+        "markdown_inline",
+        "python",
+        "query",
+        "regex",
+        "tsx",
+        "typescript",
+        "vim",
+        "yaml",
+        "php",
+        "go",
+        "sql",
+      },
+    },
+  },
 }

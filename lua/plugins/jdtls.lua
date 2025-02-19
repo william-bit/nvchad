@@ -1,8 +1,8 @@
 -- This is the same as in lspconfig.configs.jdtls, but avoids
 -- needing to require that when this module loads.
 local java_filetypes = { "java" }
--- local capabilities = require("cmp_nvim_lsp").default_capabilities()
-local capabilities = require("blink.cmp").get_lsp_capabilities()
+
+local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 -- Utility function to extend or override a config table, similar to the way
 -- that Plugin.opts works.
