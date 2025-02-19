@@ -1,7 +1,42 @@
+-- Toggle term
+local keys = {
+  {
+    "<c-j>",
+    function()
+      require("toggleterm").toggle()
+    end,
+    desc = "terminal toggleable vertical term",
+    mode = { "n", "t" },
+  },
+  {
+    "<a-i>",
+    function()
+      require("toggleterm.terminal").Terminal
+        :new({ cmd = "lazygit", hidden = true, display_name = "LazyGit" })
+        :toggle(10, "float")
+    end,
+    desc = "Lazygit (Root Dir)",
+    mode = { "n", "t" },
+  },
+}
+
+for i = 10, 1, -1 do
+  table.insert(keys, {
+    "<A-" .. i .. ">",
+    function()
+      require("toggleterm").toggle(i, 10, "git_dir", "horizontal", "terminal" .. i)
+    end,
+    desc = "terminal toggleable vertical term " .. i,
+    mode = { "n", "t" },
+  })
+end
+
 return {
   {
     "akinsho/toggleterm.nvim",
     cmd = "ToggleTerm",
+    event = "VeryLazy",
+    keys = keys,
     opts = {
       shade_terminals = false,
       shade_filetypes = {},
