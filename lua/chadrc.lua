@@ -173,7 +173,6 @@ M.mason = {
     "delve",
     "gofumpt",
     "goimports",
-    "google-java-format",
     "gopls",
     "gradle-language-server",
     "hadolint",

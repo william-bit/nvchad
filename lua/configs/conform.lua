@@ -21,7 +21,6 @@ local options = {
     python = { "isort", "black" },
     -- Use a sub-list to run only the first available formatter
     markdown = { "prettierd", stop_after_first = true },
-    java = { "google-java-format" },
     javascript = { "prettierd", stop_after_first = true },
     typescript = { "prettierd", stop_after_first = true },
     javascriptreact = { "prettierd", "rustywind" },
