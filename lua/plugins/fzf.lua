@@ -53,10 +53,13 @@ return {
           ["ctrl-q"] = "select-all+accept",
         },
       },
+      oldfiles = {
+        color_icons = false,
+      },
       files = {
         previewer = false,
         color_icons = false,
-        path_shorten = true,
+        path_shorten = false,
         multiprocess = true,
       },
       grep = {

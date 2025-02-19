@@ -16,7 +16,6 @@ local on_attach = function(_, bufnr)
   map("n", "<leader>wl", function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, opts "List workspace folders")
-  map("n", "<leader>ra", require "nvchad.lsp.renamer", opts "NvRenamer")
 end
 
 dofile(vim.g.base46_cache .. "lsp")
@@ -56,11 +55,8 @@ lspconfig.lua_ls.setup {
       workspace = {
         library = {
           vim.fn.expand "$VIMRUNTIME/lua",
-          vim.fn.expand "$VIMRUNTIME/lua/vim/lsp",
           vim.fn.stdpath "config" .. "/lua",
           vim.fn.stdpath "data" .. "/lazy",
-          vim.fn.stdpath "data" .. "/lazy/ui/nvchad_types",
-          vim.fn.stdpath "data" .. "/lazy/lazy.nvim/lua/lazy",
           "${3rd}/luv/library",
         },
         maxPreload = 100000,
