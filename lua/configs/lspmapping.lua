@@ -17,7 +17,7 @@ local on_attach = function(_, bufnr)
     vim.diagnostic.open_float()
   end, { desc = "Show Error info" })
   map("n", "gs", function()
-    require "nvchad.lsp.renamer"()
+    vim.lsp.buf.rename()
   end, { desc = "Rename LSP" })
 end
 
