@@ -1,6 +1,6 @@
-local M = {}
+local keystroke = {}
 
-M.array_key = { "", "" }
+keystroke.array_key = { "", "" }
 local endCommand = {
   "h",
   "j",
@@ -84,10 +84,10 @@ vim.on_key(function(_, key)
   if key and #key > 0 then
     local mode = vim.api.nvim_get_mode()
     if mode.mode == "n" or mode.mode == "no" then
-      local input_key = table.concat(M.array_key)
+      local input_key = table.concat(keystroke.array_key)
       local typed = vim.fn.keytrans(key)
-      local last_typed = M.array_key[#M.array_key]
-      local last_2typed = M.array_key[#M.array_key - 1] .. M.array_key[#M.array_key]
+      local last_typed = keystroke.array_key[#keystroke.array_key]
+      local last_2typed = keystroke.array_key[#keystroke.array_key - 1] .. keystroke.array_key[#keystroke.array_key]
       if
         input_key == "0"
         or input_key == "$"
@@ -98,12 +98,12 @@ vim.on_key(function(_, key)
         or contains(endCommand, last_typed)
         or contains(endCommand, last_2typed)
       then
-        M.array_key = { "", "" }
+        keystroke.array_key = { "", "" }
       end
-      table.insert(M.array_key, typed)
+      table.insert(keystroke.array_key, typed)
     end
     vim.cmd [[ doautoall ]]
   end
 end)
 
-return M
+return keystroke
