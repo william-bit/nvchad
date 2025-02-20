@@ -1,7 +1,7 @@
 local M = {}
 
 M.array_key = { "", "" }
-local endcommand = {
+local endCommand = {
   "h",
   "j",
   "k",
@@ -95,8 +95,8 @@ vim.on_key(function(_, key)
         or string.match(last_typed, "<.+>")
         or string.match(last_2typed, "[f|F|t|T].")
         or string.match(last_2typed, "[a-zA-Z][0|$]")
-        or contains(endcommand, last_typed)
-        or contains(endcommand, last_2typed)
+        or contains(endCommand, last_typed)
+        or contains(endCommand, last_2typed)
       then
         M.array_key = { "", "" }
       end

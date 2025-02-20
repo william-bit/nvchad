@@ -1,6 +1,6 @@
 local lspconfig = require "lspconfig"
 local nvlsp = require "nvchad.configs.lspconfig"
-local on_attach = require "configs.lspmapping"
+local on_attach = require "configs.lspattach"
 
 dofile(vim.g.base46_cache .. "lsp")
 require("nvchad.lsp").diagnostic_config()
