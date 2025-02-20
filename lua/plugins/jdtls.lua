@@ -4,6 +4,7 @@ local java_filetypes = { "java" }
 
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 local on_init = require("nvchad.configs.lspconfig").on_init
+local on_attach = require "configs.lspmapping"
 
 -- Utility function to extend or override a config table, similar to the way
 -- that Plugin.opts works.
@@ -159,6 +160,7 @@ return {
           settings = opts.settings,
           -- enable CMP capabilities
           capabilities = capabilities,
+          on_attach = on_attach,
           on_init = on_init,
         }, opts.jdtls)
 
