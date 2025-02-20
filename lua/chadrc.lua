@@ -147,9 +147,9 @@ M.nvdash = {
       cmd = ":lua require('toggleterm.terminal').Terminal :new({ cmd = 'lazygit', hidden = true, display_name = 'LazyGit' }) :toggle(10, 'float')",
     },
     { txt = "󱥚  Themes", keys = "t", cmd = ":lua require('nvchad.themes').open()" },
-    { txt = "  Mappings", keys = "m", cmd = "NvCheatsheet" },
     { txt = "󰒲  Lazy", keys = "l", cmd = ":Lazy" },
-    { txt = "󰙅  Mason", keys = "s", cmd = ":Mason" },
+    { txt = "󰙅  Mason", keys = "m", cmd = ":Mason" },
+    { txt = "  Mappings", keys = "?", cmd = "NvCheatsheet" },
     { txt = "  Quit", keys = "q", cmd = ":qa" },
     { txt = "─", hl = "NvDashFooter", no_gap = true, rep = true },
     {
