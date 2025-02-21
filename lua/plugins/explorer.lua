@@ -1,8 +1,15 @@
 return {
   {
     "nvim-tree/nvim-tree.lua",
+    event = "VeryLazy",
     keys = {
-      { "<A-b>", require("nvim-tree.api").tree.toggle, desc = "toggle nvim-tree" },
+      {
+        "<A-b>",
+        function()
+          require("nvim-tree.api").tree.toggle()
+        end,
+        desc = "toggle nvim-tree",
+      },
     },
     opts = {
       filters = { dotfiles = false },

@@ -1,5 +1,3 @@
-require("nvim-treesitter.install").compilers = { "zig" }
-
 return {
   {
     "stevearc/conform.nvim",
@@ -17,28 +15,31 @@ return {
   "williamboman/mason-lspconfig.nvim",
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = {
-      ensure_installed = {
-        "vimdoc",
-        "bash",
-        "html",
-        "java",
-        "javascript",
-        "json",
-        "lua",
-        "markdown",
-        "markdown_inline",
-        "python",
-        "query",
-        "regex",
-        "tsx",
-        "typescript",
-        "vim",
-        "yaml",
-        "php",
-        "go",
-        "sql",
-      },
-    },
+    opts = function()
+      require("nvim-treesitter.install").compilers = { "zig" }
+      return {
+        ensure_installed = {
+          "vimdoc",
+          "bash",
+          "html",
+          "java",
+          "javascript",
+          "json",
+          "lua",
+          "markdown",
+          "markdown_inline",
+          "python",
+          "query",
+          "regex",
+          "tsx",
+          "typescript",
+          "vim",
+          "yaml",
+          "php",
+          "go",
+          "sql",
+        },
+      }
+    end,
   },
 }
