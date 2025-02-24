@@ -17,29 +17,31 @@ return {
     "nvim-treesitter/nvim-treesitter",
     opts = function()
       require("nvim-treesitter.install").compilers = { "zig" }
-      return {
-        ensure_installed = {
-          "vimdoc",
-          "bash",
-          "html",
-          "java",
-          "javascript",
-          "json",
-          "lua",
-          "markdown",
-          "markdown_inline",
-          "python",
-          "query",
-          "regex",
-          "tsx",
-          "typescript",
-          "vim",
-          "yaml",
-          "php",
-          "go",
-          "sql",
-        },
+      local opts = require "nvchad.configs.treesitter"
+      opts.ensure_installed = {
+        "bash",
+        "go",
+        "html",
+        "java",
+        "javascript",
+        "json",
+        "lua",
+        "luadoc",
+        "markdown",
+        "markdown_inline",
+        "php",
+        "printf",
+        "python",
+        "query",
+        "regex",
+        "sql",
+        "tsx",
+        "typescript",
+        "vim",
+        "vimdoc",
+        "yaml",
       }
+      return opts
     end,
   },
 }
