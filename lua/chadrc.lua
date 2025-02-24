@@ -102,7 +102,7 @@ M.ui = {
   statusline = {
     theme = "minimal",
     separator_style = "default",
-    order = { "mode", "file", "git", "%=", "%=", "diagnostics", "lsp", "macro", "feedkey", "cwd", "cursor" },
+    order = { "mode", "file", "git", "%=", "%=", "diagnostics", "lsp", "macro", "keystroke", "cwd", "cursor" },
     modules = {
       macro = function()
         local reg = vim.fn.reg_recording()
@@ -111,8 +111,8 @@ M.ui = {
         end -- not recording
         return "Recording @" .. reg .. " "
       end,
-      feedkey = function()
-        return "[" .. table.concat(require("configs.keystroke").array_key) .. "] "
+      keystroke = function()
+        return " " .. table.concat(require("configs.keystroke").array_key) .. " "
       end,
     },
   },
