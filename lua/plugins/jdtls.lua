@@ -2,10 +2,6 @@
 -- needing to require that when this module loads.
 local java_filetypes = { "java" }
 
-local capabilities = require("nvchad.configs.lspconfig").capabilities
-local on_init = require("nvchad.configs.lspconfig").on_init
-local on_attach = require "configs.lspattach"
-
 -- Utility function to extend or override a config table, similar to the way
 -- that Plugin.opts works.
 ---@param config table
@@ -176,10 +172,11 @@ return {
             bundles = bundles,
           },
           settings = opts.settings,
+
           -- enable CMP capabilities
-          capabilities = capabilities,
-          on_attach = on_attach,
-          on_init = on_init,
+          capabilities = require("nvchad.configs.lspconfig").capabilities,
+          on_attach = require "configs.lspattach",
+          on_init = require("nvchad.configs.lspconfig").on_init,
         }, opts.jdtls)
 
         -- Existing server will be reused if the root_dir matches.
