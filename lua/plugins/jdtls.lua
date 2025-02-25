@@ -74,6 +74,20 @@ return {
         jdtls_config_dir = function(project_name)
           return vim.fn.stdpath "cache" .. "/jdtls/" .. project_name .. "/config"
         end,
+        jdtls_equinox_jar = function()
+          -- INFO: It's annoying to edit the version again and again.
+          local equinox_path =
+            vim.split(vim.fn.glob(mason_registry.get_package("jdtls"):get_install_path() .. "/plugins/*jar"), "\n")
+          local equinox_launcher = ""
+
+          for _, file in pairs(equinox_path) do
+            if file:match "launcher_" then
+              equinox_launcher = file
+              break
+            end
+          end
+          return equinox_launcher
+        end,
         jdtls_workspace_dir = function(project_name)
           return vim.fn.stdpath "cache" .. "/jdtls/" .. project_name .. "/workspace"
         end,
@@ -88,6 +102,19 @@ return {
           local fullCmd = vim.deepcopy(opts.cmd)
           if project_name then
             vim.list_extend(fullCmd, {
+              "-Declipse.application=org.eclipse.jdt.ls.core.id1",
+              "-Dosgi.bundles.defaultStartLevel=4",
+              "-Declipse.product=org.eclipse.jdt.ls.core.product",
+              "-Dlog.protocol=true",
+              "-Dlog.level=ALL",
+              "-Xms1g",
+              "--add-modules=ALL-SYSTEM",
+              "--add-opens",
+              "java.base/java.util=ALL-UNNAMED",
+              "--add-opens",
+              "java.base/java.lang=ALL-UNNAMED",
+              "-jar",
+              opts.jdtls_equinox_jar(),
               "-configuration",
               opts.jdtls_config_dir(project_name),
               "-data",
