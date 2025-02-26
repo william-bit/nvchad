@@ -31,6 +31,20 @@ return {
       local cmd = { vim.fn.exepath "jdtls" }
       local mason_registry = require "mason-registry"
       local lombok_jar = mason_registry.get_package("jdtls"):get_install_path() .. "/lombok.jar"
+      local equinox_jar = function()
+        -- INFO: It's annoying to edit the version again and again.
+        local equinox_path =
+          vim.split(vim.fn.glob(mason_registry.get_package("jdtls"):get_install_path() .. "/plugins/*jar"), "\n")
+        local equinox_launcher = ""
+
+        for _, file in pairs(equinox_path) do
+          if file:match "org.eclipse.equinox.launcher_" then
+            equinox_launcher = file
+            break
+          end
+        end
+        return equinox_launcher
+      end
       table.insert(cmd, string.format("--jvm-arg=-javaagent:%s", lombok_jar))
       return {
         -- How to find the root dir for a given filename. The default comes from
@@ -45,20 +59,6 @@ return {
         -- Where are the config and workspace dirs for a project?
         jdtls_config_dir = function(project_name)
           return vim.fn.stdpath "cache" .. "/jdtls/" .. project_name .. "/config"
-        end,
-        jdtls_equinox_jar = function()
-          -- INFO: It's annoying to edit the version again and again.
-          local equinox_path =
-            vim.split(vim.fn.glob(mason_registry.get_package("jdtls"):get_install_path() .. "/plugins/*jar"), "\n")
-          local equinox_launcher = ""
-
-          for _, file in pairs(equinox_path) do
-            if file:match "launcher_" then
-              equinox_launcher = file
-              break
-            end
-          end
-          return equinox_launcher
         end,
         jdtls_workspace_dir = function(project_name)
           return vim.fn.stdpath "cache" .. "/jdtls/" .. project_name .. "/workspace"
@@ -86,7 +86,7 @@ return {
               "--add-opens",
               "java.base/java.lang=ALL-UNNAMED",
               "-jar",
-              opts.jdtls_equinox_jar(),
+              equinox_jar(),
               "-configuration",
               opts.jdtls_config_dir(project_name),
               "-data",
@@ -150,7 +150,10 @@ return {
           settings = opts.settings,
 
           -- enable CMP capabilities
-          capabilities = require("nvchad.configs.lspconfig").capabilities,
+          -- require("nvchad.configs.lspconfig").capabilities,
+          -- require('blink.cmp').get_lsp_capabilities(),
+          -- require("cmp_nvim_lsp").default_capabilities(),
+          capabilities = require("blink.cmp").get_lsp_capabilities(),
           on_attach = require "configs.lspattach",
           on_init = require("nvchad.configs.lspconfig").on_init,
         }, opts.jdtls)
