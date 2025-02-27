@@ -43,6 +43,7 @@ return {
         },
       },
       cmdline = {
+        completion = { ghost_text = { enabled = false } },
         keymap = {
           preset = "default",
           ["<Enter>"] = { "select_and_accept", "fallback" },
