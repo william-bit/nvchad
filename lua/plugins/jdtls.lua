@@ -187,13 +187,14 @@ return {
                 { "<leader>cxv", require("jdtls").extract_variable_all, desc = "Extract Variable" },
                 { "<leader>cxc", require("jdtls").extract_constant, desc = "Extract Constant" },
                 { "<leader>cgs", require("jdtls").super_implementation, desc = "Goto Super" },
+                { "<leader>coi", require("jdtls").organize_imports, desc = "Organize Imports" },
                 { "<leader>cgS", require("jdtls.tests").goto_subjects, desc = "Goto Subjects" },
                 {
                   "<leader>cf",
                   function()
                     vim.lsp.buf.format()
                   end,
-                  desc = "Format File",
+                  desc = "Format File Java",
                 },
               },
             }

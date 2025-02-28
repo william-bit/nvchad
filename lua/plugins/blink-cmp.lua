@@ -10,6 +10,7 @@ return {
     event = { "VeryLazy" },
     dependencies = {
       "rafamadriz/friendly-snippets",
+      "saghen/blink.compat",
       { "L3MON4D3/LuaSnip", version = "v2.*" },
     },
     -- use a release tag to download pre-built binaries
@@ -17,9 +18,15 @@ return {
       snippets = { preset = "luasnip" },
       -- ensure you have the `snippets` source (enabled by default)
       sources = {
-        default = { "lsp", "path", "snippets", "buffer" },
+        default = { "lsp", "path", "snippets", "buffer", "supermaven" },
         providers = {
           lsp = {
+            async = true,
+          },
+          supermaven = {
+            name = "supermaven",
+            module = "blink.compat.source",
+            score_offset = 100,
             async = true,
           },
         },
