@@ -1,8 +1,3 @@
-local banned_notification_messages = {
-  "No buffers found with the provided options",
-  "No information available",
-}
-
 return { -- lazy.nvim
   {
     "folke/noice.nvim",
@@ -17,15 +12,14 @@ return { -- lazy.nvim
       {
         "rcarriga/nvim-notify",
         opts = function()
+          -- Remove notification when cursor changed and new text added
+          vim.api.nvim_create_autocmd({ "CursorMoved", "TextChangedI" }, {
+            callback = function()
+              require("notify").dismiss()
+            end,
+          })
+
           -- Change native notify to vim notify
-          vim.notify = function(msg, ...)
-            for _, banned_msg in ipairs(banned_notification_messages) do
-              if string.find(msg, banned_msg) then
-                return
-              end
-            end
-            require "notify"(msg, ...)
-          end
           return {
             render = "compact",
             stages = "static",
