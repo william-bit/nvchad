@@ -1,14 +1,25 @@
+local keys = "abcdefghijklmnopqrstuvwxyz"
+
+local current_keys = keys
+local remapHopKeys = function(remap)
+  if remap ~= current_keys then
+    current_keys = remap
+    require("hop").setup { keys = remap }
+  end
+end
+
 return {
   {
     "smoka7/hop.nvim",
     version = "*",
     opts = {
-      keys = "abcdefghijklmnopqrstuvwxyz",
+      keys = keys,
     },
     keys = {
       {
         "t",
         function()
+          remapHopKeys(keys)
           require("hop").hint_char1 {
             direction = require("hop.hint").HintDirection.AFTER_CURSOR,
             current_line_only = true,
@@ -19,6 +30,7 @@ return {
       {
         "T",
         function()
+          remapHopKeys(keys)
           require("hop").hint_char1 {
             direction = require("hop.hint").HintDirection.BEFORE_CURSOR,
             current_line_only = true,
@@ -29,6 +41,7 @@ return {
       {
         "f",
         function()
+          remapHopKeys(keys)
           require("hop").hint_char1 {
             direction = require("hop.hint").HintDirection.AFTER_CURSOR,
             current_line_only = true,
@@ -38,6 +51,7 @@ return {
       {
         "F",
         function()
+          remapHopKeys(keys)
           require("hop").hint_char1 {
             direction = require("hop.hint").HintDirection.BEFORE_CURSOR,
             current_line_only = true,
@@ -47,6 +61,7 @@ return {
       {
         "h",
         function()
+          remapHopKeys "habcdefgijklmnopqrstuvwxyz"
           require("hop").hint_anywhere {
             direction = require("hop.hint").HintDirection.BEFORE_CURSOR,
             current_line_only = true,
@@ -56,6 +71,7 @@ return {
       {
         "l",
         function()
+          remapHopKeys "labcdefghijkmnopqrstuvwxyz"
           require("hop").hint_anywhere {
             direction = require("hop.hint").HintDirection.AFTER_CURSOR,
             current_line_only = true,
@@ -63,20 +79,9 @@ return {
         end,
       },
       {
-        "s",
-        function()
-          require("hop").hint_vertical()
-        end,
-      },
-      {
-        "S",
-        function()
-          require("hop").hint_lines()
-        end,
-      },
-      {
         "b",
         function()
+          remapHopKeys "bacdefghijklmnopqrstuvwxyz"
           require("hop").hint_words {
             direction = require("hop.hint").HintDirection.BEFORE_CURSOR,
             current_line_only = true,
@@ -86,6 +91,7 @@ return {
       {
         "B",
         function()
+          remapHopKeys "bacdefghijklmnopqrstuvwxyz"
           require("hop").hint_words {
             direction = require("hop.hint").HintDirection.BEFORE_CURSOR,
             hint_position = require("hop.hint").HintPosition.END,
@@ -96,6 +102,7 @@ return {
       {
         "w",
         function()
+          remapHopKeys "wabcdefghijklmnopqrstuvxyz"
           require("hop").hint_words {
             direction = require("hop.hint").HintDirection.AFTER_CURSOR,
             current_line_only = true,
@@ -105,6 +112,7 @@ return {
       {
         "W",
         function()
+          remapHopKeys "wabcdefghijklmnopqrstuvxyz"
           require("hop").hint_words {
             direction = require("hop.hint").HintDirection.AFTER_CURSOR,
             hint_position = require("hop.hint").HintPosition.END,
