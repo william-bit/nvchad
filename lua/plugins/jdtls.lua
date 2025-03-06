@@ -155,7 +155,7 @@ return {
           -- require("cmp_nvim_lsp").default_capabilities(),
           capabilities = require("blink.cmp").get_lsp_capabilities(),
           on_attach = require "configs.lspattach",
-          on_init = require("nvchad.configs.lspconfig").on_init,
+          on_init = require("configs.lsp").on_init,
         }, opts.jdtls)
 
         -- Existing server will be reused if the root_dir matches.

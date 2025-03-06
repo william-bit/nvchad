@@ -22,6 +22,8 @@ return {
       opts.ensure_installed = {
         "bash",
         "go",
+        "gomod",
+        "gosum",
         "html",
         "java",
         "javascript",
