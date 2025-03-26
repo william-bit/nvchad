@@ -46,6 +46,7 @@ return {
         { name = "nvim_lua" },
         { name = "path" },
         { name = "spell" },
+        { name = "supermaven" },
       }
       conf.mapping = {
         ["<C-p>"] = cmp.mapping.select_prev_item(),

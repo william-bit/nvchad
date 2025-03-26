@@ -18,7 +18,7 @@ return {
       snippets = { preset = "luasnip" },
       -- ensure you have the `snippets` source (enabled by default)
       sources = {
-        default = { "lsp", "path", "snippets", "buffer", "supermaven" },
+        default = { "lsp", "path", "snippets", "buffer" },
         providers = {
           lsp = {
             async = true,

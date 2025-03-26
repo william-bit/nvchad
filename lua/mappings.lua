@@ -1,5 +1,12 @@
 require "nvchad.mappings"
 
+-- remove default mappings
+
+local delete = vim.keymap.del
+delete("n", "<tab>")
+delete("n", "<S-tab>")
+delete("n", "<leader>x")
+
 -- add yours here
 
 local map = vim.keymap

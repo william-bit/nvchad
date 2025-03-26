@@ -150,11 +150,8 @@ return {
           settings = opts.settings,
 
           -- enable CMP capabilities
-          -- require("nvchad.configs.lspconfig").capabilities,
-          -- require('blink.cmp').get_lsp_capabilities(),
-          -- require("cmp_nvim_lsp").default_capabilities(),
-          capabilities = require("blink.cmp").get_lsp_capabilities(),
-          on_attach = require "configs.lspattach",
+          capabilities = require("configs.lsp").capabilities,
+          on_attach = require("configs.lsp").on_attach,
           on_init = require("configs.lsp").on_init,
         }, opts.jdtls)
 

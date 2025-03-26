@@ -31,6 +31,7 @@ M.nvdash = {
   },
 
   buttons = {
+    { txt = "  New File", keys = "n", cmd = "enew" },
     { txt = "  Find File", keys = "C-p", cmd = "FzfLua files" },
     { txt = "󰈭  Find Word", keys = "C-f", cmd = "FzfLua live_grep" },
     { txt = "  Git Files", keys = "C-t", cmd = "FzfLua git_status" },

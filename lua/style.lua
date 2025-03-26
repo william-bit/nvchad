@@ -72,6 +72,74 @@ function Style.FZF_LUA(border)
   return vim.tbl_extend("force", hlgroups, styles[border and "bordered" or "borderless"])
 end
 
+function Style.DAP()
+  ---@type Colors
+  local colors = Style.colors
+  -- custom highlights per style!
+  local styles_base = {
+    DapUINormal = { fg = colors.white, bg = colors.black },
+    DapUIPlayPause = { fg = colors.green, bg = colors.black },
+    DapUIPlay = { fg = colors.green, bg = colors.black },
+    DapUIRestart = { fg = colors.green, bg = colors.black },
+    DapUIStop = { fg = colors.red, bg = colors.black },
+    DapUIStepBack = { fg = colors.white, bg = colors.black },
+    DapUIStepInto = { fg = colors.white, bg = colors.black },
+    DapUIStepOut = { fg = colors.white, bg = colors.black },
+    DapUIStepOver = { fg = colors.white, bg = colors.black },
+    DapUIVariable = { fg = colors.white, bg = colors.black },
+  }
+  local style_item = {
+    DapUIBreakpointsCurrent = { fg = colors.red },
+    DapUIBreakpointsDisabled = { fg = colors.grey },
+    DapUIBreakpointsError = { fg = colors.red },
+    DapUIBreakpointsInfo = { fg = colors.seablue },
+    DapUIBreakpointsLine = { fg = colors.seablue },
+    DapUIBreakpointsPath = { fg = colors.seablue },
+    DapUIBreakpointsRejected = { fg = colors.grey },
+    DapUIBreakpointsSource = { fg = colors.seablue },
+
+    DapUIScope = { fg = colors.seablue },
+    DapUIType = { fg = colors.seablue },
+    DapUIValue = { fg = colors.seablue },
+    DapUIModifiedValue = { fg = colors.seablue },
+    DapUIDecoration = { fg = colors.seablue },
+
+    DapUIWatchesEmpty = { fg = colors.grey },
+    DapUIWatchesValue = { fg = colors.seablue },
+    DapUIWatchesError = { fg = colors.red },
+  }
+  local signs = {
+    DapBreakpoint = { fg = colors.red },
+    DapBreakpointCondition = { fg = colors.red },
+    DapBreakpointRejected = { fg = colors.grey },
+    DapStopped = { fg = colors.green },
+    DapLogPoint = { fg = colors.seablue },
+  }
+
+  vim.fn.sign_define(
+    "DapBreakpoint",
+    { text = "•", texthl = "DapBreakpoint", linehl = "DapBreakpoint", numhl = "DapBreakpoint" }
+  )
+  vim.fn.sign_define(
+    "DapBreakpointCondition",
+    { text = "•", texthl = "DapBreakpointCondition", linehl = "DapBreakpoint", numhl = "DapBreakpoint" }
+  )
+  vim.fn.sign_define(
+    "DapBreakpointRejected",
+    { text = "•", texthl = "DapBreakpointRejected", linehl = "DapBreakpoint", numhl = "DapBreakpoint" }
+  )
+  vim.fn.sign_define(
+    "DapStopped",
+    { text = "•", texthl = "DapStopped", linehl = "DapBreakpoint", numhl = "DapBreakpoint" }
+  )
+  vim.fn.sign_define(
+    "DapLogPoint",
+    { text = "•", texthl = "DapLogPoint", linehl = "DapBreakpoint", numhl = "DapBreakpoint" }
+  )
+
+  return vim.tbl_extend("force", styles_base, style_item, signs)
+end
+
 function Style.CMP_BLINK()
   ---@type Colors
   local colors = Style.colors
@@ -130,3 +198,4 @@ end
 
 Style.Override(Style.CMP_BLINK())
 Style.Override(Style.FZF_LUA(false))
+Style.Override(Style.DAP())
