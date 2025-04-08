@@ -186,13 +186,6 @@ return {
                 { "<leader>cgs", require("jdtls").super_implementation, desc = "Goto Super" },
                 { "<leader>coi", require("jdtls").organize_imports, desc = "Organize Imports" },
                 { "<leader>cgS", require("jdtls.tests").goto_subjects, desc = "Goto Subjects" },
-                {
-                  "<leader>cf",
-                  function()
-                    vim.lsp.buf.format()
-                  end,
-                  desc = "Format File Java",
-                },
               },
             }
             wk.add {

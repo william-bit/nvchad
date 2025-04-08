@@ -2,6 +2,15 @@ return {
   {
     "stevearc/conform.nvim",
     -- event = "BufWritePre", -- uncomment for format on save
+    keys = {
+      {
+        "<leader>cf",
+        function()
+          require("conform").format()
+        end,
+        desc = "Format File",
+      },
+    },
     opts = require "configs.conform",
   },
 
